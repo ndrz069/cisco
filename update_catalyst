@@ -1,0 +1,10 @@
+request platform software package clean
+copy tftp://<ip-address-of-server/<imagefile.bin> flash:
+request platform software package install switch all file flash:<imagefile.bin>
+reload
+
+Example:
+request platform software package clean
+copy tftp://10.8.0.6//cat9k_iosxe.16.09.02.SPA.bin flash:
+request platform software package install switch all file flash:cat9k_iosxe.16.09.02.SPA.bin
+reload
