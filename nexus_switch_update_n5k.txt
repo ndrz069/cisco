@@ -1,0 +1,54 @@
+copy usb1:n5000-uk9-kickstart.7.3.8.N1.1.bin bootflash:
+copy usb1:n5000-uk9.7.3.8.N1.1.bin bootflash:
+switch(config)# install all kickstart bootflash:n5000-uk9-kickstart.7.3.8.N1.1.bin system bootflash:n5000-uk9.7.3.8.N1.1.bin
+
+
+Verifying image bootflash:/n5000-uk9-kickstart.7.3.8.N1.1.bin for boot variable "kickstart".
+[####################] 100% -- SUCCESS
+
+Verifying image bootflash:/n5000-uk9.7.3.8.N1.1.bin for boot variable "system".
+[####################] 100% -- SUCCESS
+
+Verifying image type.
+[####################] 100% -- SUCCESS
+
+Extracting "system" version from image bootflash:/n5000-uk9.7.3.8.N1.1.bin.
+[####################] 100% -- SUCCESS
+
+Extracting "kickstart" version from image bootflash:/n5000-uk9-kickstart.7.3.8.N1.1.bin.
+[####################] 100% -- SUCCESS
+
+Extracting "bios" version from image bootflash:/n5000-uk9.7.3.8.N1.1.bin.
+[####################] 100% -- SUCCESS
+
+Performing module support checks.
+[####################] 100% -- SUCCESS
+
+Notifying services about system upgrade.
+[####################] 100% -- SUCCESS
+
+
+
+Compatibility check is done:
+Module  bootable          Impact  Install-type  Reason
+------  --------  --------------  ------------  ------
+     1       yes  non-disruptive         reset
+     2       yes  non-disruptive       rolling
+     3       yes  non-disruptive       rolling
+
+
+
+Images will be upgraded according to following table:
+Module             Image         Running-Version             New-Version  Upg-Required
+------  ----------------  ----------------------  ----------------------  ------------
+     1            system             7.3(5)N1(1)             7.3(8)N1(1)           yes
+     1         kickstart             7.3(5)N1(1)             7.3(8)N1(1)           yes
+     1              bios      v3.6.0(05/09/2012)      v3.6.0(05/09/2012)            no
+     1         power-seq                    v3.0                    v3.0            no
+     1            SFP-uC                v1.0.0.0                v1.0.0.0            no
+     2         power-seq                    v1.0                    v1.0            no
+     3         power-seq                    v2.0                    v2.0            no
+     1   microcontroller                v1.2.0.1                v1.2.0.1            no
+
+
+Do you want to continue with the installation (y/n)?  [n]
