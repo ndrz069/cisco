@@ -1,0 +1,22 @@
+configure terminal
+line console 0
+modem enable
+line aux 0
+transport input telnet
+line vty 0 4
+transport output ssh telnet
+end
+
+#
+#telnet <LOOPBACK-IP>
+
+
+!Rollback:
+configure terminal
+line aux 0
+no transport input
+line vty 0 4
+transport output ssh
+line console 0
+no modem enable
+end
