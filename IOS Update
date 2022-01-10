@@ -1,0 +1,46 @@
+ISR Update
+
+########## CONFIGURIEREN DES INTERFACES ##########
+configure terminal
+int GigabitEthernet0/0/0
+ip address <ip-addresse-interface> <dazugehörige-subnetzmaske>
+no shutdown
+end
+
+########## VEBINDUNG TESTEN ##########
+ping <ip-addresse-laptop/sesrver>
+
+########## LÖSCHEN DES FLASH ##########
+format flash:
+format bootflash:
+
+########## IMAGE AUF ROUTER ÜBERTRAGEN ##########
+copy tftp://<ip-addresse-laptop/sesrver>/<imagedatei.bin> bootflash:
+
+########## ROUTER VON IMAGE BOOTEN LASSEN ##########
+configure terminal
+boot system flash bootflash:<imagefile.bin>
+config 0x2102
+do wr mem
+end
+
+########## ROUTER VON IMAGE BOOTEN LASSEN ##########
+copy tftp://<configdatei.cfg> flash:
+copy flash:<configdatei.cfg> startup
+reload
+
+########## CRYPTO KEY GENERIEREN ##########
+conf t
+crypto key generate rsa general-keys modulus 2048
+end
+wr
+
+
+########## OPTIONAL LOG ZIEHEN ##########
+term length 0
+sh ver
+sh run
+sh ip int brief
+sh inventory
+show crypto key mypubkey rsa
+sh version | incl board
