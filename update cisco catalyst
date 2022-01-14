@@ -1,0 +1,12 @@
+switch# request platform software package clean
+
+switch# copy usbflash0://<imagefile.bin> flash:
+
+switch# request platform software package install switch all file flash:<imagefile.bin>
+
+switch# reload
+
+request platform software package clean
+copy usbflash0://cat9k_iosxe.17.03.03.SPA.bin flash:
+request platform software package install switch all file flash:cat9k_iosxe.17.03.03.SPA.bin
+reload
